@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Given an array of integers, return indices of the two numbers such that they add up to a specific target.
  * <p>
@@ -24,8 +27,23 @@ public class TwoSum {
         return new int[]{-1, -1};
     }
 
+    static int[] sumOfTwoComplementWay(int[] nums, int target) {
+        Map<Integer, Integer> mapOfNumAndComplement = new HashMap<Integer, Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            if(mapOfNumAndComplement.containsKey(nums[i])) {
+                return new int[]{nums[i], mapOfNumAndComplement.get(nums[i])};
+            }
+            mapOfNumAndComplement.put(target - nums[i], nums[i]);
+        }
+        return new int[]{-1, -1};
+    }
+
     public static void main(String[] args) {
-        int[] ints = sumOfTwo(new int[]{2, 7, 11, 15}, 9);
+        int[] input = {6, 7, 11, 15, 3};
+        int target = 9;
+        int[] ints = sumOfTwo(input, target);
+        System.out.println(ints[0] + ", " + ints[1]);
+        int[] ints2 = sumOfTwoComplementWay(input, target);
         System.out.println(ints[0] + ", " + ints[1]);
     }
 }
