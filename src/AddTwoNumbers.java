@@ -16,6 +16,9 @@ public class AddTwoNumbers {
             l2 = l2.next;
         } while(null != l2);
         sum = n1 + n2;
+
+        //TODO: Return linked list in a similar fashion as inputs
+
         return sum;
     }
 
