@@ -3,7 +3,7 @@ import java.util.Map;
 
 /**
  * 1. Two Sum
- *
+ * <p>
  * Given an array of integers, return indices of the two numbers such that they add up to a specific target.
  * <p>
  * You may assume that each input would have exactly one solution, and you may not use the same element twice.
@@ -32,7 +32,7 @@ public class TwoSum {
     static int[] sumOfTwoComplementWay(int[] nums, int target) {
         Map<Integer, Integer> mapOfNumAndComplement = new HashMap<Integer, Integer>();
         for (int i = 0; i < nums.length; i++) {
-            if(mapOfNumAndComplement.containsKey(nums[i])) {
+            if (mapOfNumAndComplement.containsKey(nums[i])) {
                 return new int[]{nums[i], mapOfNumAndComplement.get(nums[i])};
             }
             mapOfNumAndComplement.put(target - nums[i], nums[i]);
