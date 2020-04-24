@@ -22,6 +22,9 @@ public class LongestPalindromicSubstring {
             for (int i = 0; i <= s.length(); i++) {
                 for (int j = i + 1; j <= s.length(); j++) {
                     subStr = s.substring(i, j);
+                    if(subStr.length() <= maxLength) {
+                        continue;
+                    }
                     if (isPalindrome(subStr)) {
                         if (subStr.length() > maxLength) {
                             maxLength = subStr.length();
@@ -51,5 +54,7 @@ public class LongestPalindromicSubstring {
         System.out.println(findLongestPalindromicSubstring("cbbd"));
         System.out.println(findLongestPalindromicSubstring("qabcbadabcbaq"));
         System.out.println(findLongestPalindromicSubstring("aba"));
+        System.out.println(findLongestPalindromicSubstring("abcbad"));
+        System.out.println(findLongestPalindromicSubstring("civilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedicatedcanlongendureWeareqmetonagreatbattlefiemldoftzhatwarWehavecometodedicpateaportionofthatfieldasafinalrestingplaceforthosewhoheregavetheirlivesthatthatnationmightliveItisaltogetherfangandproperthatweshoulddothisButinalargersensewecannotdedicatewecannotconsecratewecannothallowthisgroundThebravelmenlivinganddeadwhostruggledherehaveconsecrateditfaraboveourpoorponwertoaddordetractTgheworldadswfilllittlenotlenorlongrememberwhatwesayherebutitcanneverforgetwhattheydidhereItisforusthelivingrathertobededicatedheretotheulnfinishedworkwhichtheywhofoughtherehavethusfarsonoblyadvancedItisratherforustobeherededicatedtothegreattdafskremainingbeforeusthatfromthesehonoreddeadwetakeincreaseddevotiontothatcauseforwhichtheygavethelastpfullmeasureofdevotionthatweherehighlyresolvethatthesedeadshallnothavediedinvainthatthisnationunsderGodshallhaveanewbirthoffreedomandthatgovernmentofthepeoplebythepeopleforthepeopleshallnotperishfromtheearth"));
     }
 }
