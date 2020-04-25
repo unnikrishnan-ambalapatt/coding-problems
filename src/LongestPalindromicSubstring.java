@@ -1,3 +1,8 @@
+import javafx.scene.effect.SepiaTone;
+
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * 5. Longest Palindromic Substring
  * <p>
@@ -18,14 +23,16 @@ public class LongestPalindromicSubstring {
     private static String findLongestPalindromicSubstring(String s) {
         String longestSubStr = "", subStr = "";
         int maxLength = 0;
+        Set<String> encountered = new HashSet<>();
         if (null != s && !"".equals(s)) {
             for (int i = 0; i <= s.length(); i++) {
                 for (int j = i + 1; j <= s.length(); j++) {
                     subStr = s.substring(i, j);
-                    if(subStr.length() <= maxLength) {
+                    if(subStr.length() <= maxLength || encountered.contains(subStr)) {
                         continue;
                     }
-                    if (isPalindrome(subStr)) {
+                    if (isPalindromeFaster(subStr)) {
+                        encountered.add(subStr);
                         if (subStr.length() > maxLength) {
                             maxLength = subStr.length();
                             longestSubStr = subStr;
@@ -44,6 +51,27 @@ public class LongestPalindromicSubstring {
             reverseStr = reverseStr + str.charAt(i);
         }
         if (str.equals(reverseStr)) {
+            isPal = true;
+        }
+        return isPal;
+    }
+
+    private static boolean isPalindromeFaster(String str) {
+        boolean isPal = false;
+        String reverseStr = "";
+        if(str.length() == 1) {
+            return true;
+        }
+        if(str.length() % 2 == 0) {
+            for (int i = str.length() - 1; i >= str.length() / 2; i--) {
+                reverseStr = reverseStr + str.charAt(i);
+            }
+        } else {
+            for (int i = str.length() - 1; i > str.length() / 2; i--) {
+                reverseStr = reverseStr + str.charAt(i);
+            }
+        }
+        if (str.substring(0,str.length() / 2).equals(reverseStr)) {
             isPal = true;
         }
         return isPal;
