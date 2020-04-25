@@ -1,5 +1,3 @@
-import javafx.scene.effect.SepiaTone;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -28,7 +26,7 @@ public class LongestPalindromicSubstring {
             for (int i = 0; i <= s.length(); i++) {
                 for (int j = i + 1; j <= s.length(); j++) {
                     subStr = s.substring(i, j);
-                    if(subStr.length() <= maxLength || encountered.contains(subStr)) {
+                    if (subStr.length() <= maxLength || encountered.contains(subStr)) {
                         continue;
                     }
                     if (isPalindromeFaster(subStr)) {
@@ -59,10 +57,10 @@ public class LongestPalindromicSubstring {
     private static boolean isPalindromeFaster(String str) {
         boolean isPal = false;
         String reverseStr = "";
-        if(str.length() == 1) {
+        if (str.length() == 1) {
             return true;
         }
-        if(str.length() % 2 == 0) {
+        if (str.length() % 2 == 0) {
             for (int i = str.length() - 1; i >= str.length() / 2; i--) {
                 reverseStr = reverseStr + str.charAt(i);
             }
@@ -71,7 +69,7 @@ public class LongestPalindromicSubstring {
                 reverseStr = reverseStr + str.charAt(i);
             }
         }
-        if (str.substring(0,str.length() / 2).equals(reverseStr)) {
+        if (str.substring(0, str.length() / 2).equals(reverseStr)) {
             isPal = true;
         }
         return isPal;
@@ -83,6 +81,9 @@ public class LongestPalindromicSubstring {
         System.out.println(findLongestPalindromicSubstring("qabcbadabcbaq"));
         System.out.println(findLongestPalindromicSubstring("aba"));
         System.out.println(findLongestPalindromicSubstring("abcbad"));
+        long startTime = System.currentTimeMillis();
         System.out.println(findLongestPalindromicSubstring("civilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedicatedcanlongendureWeareqmetonagreatbattlefiemldoftzhatwarWehavecometodedicpateaportionofthatfieldasafinalrestingplaceforthosewhoheregavetheirlivesthatthatnationmightliveItisaltogetherfangandproperthatweshoulddothisButinalargersensewecannotdedicatewecannotconsecratewecannothallowthisgroundThebravelmenlivinganddeadwhostruggledherehaveconsecrateditfaraboveourpoorponwertoaddordetractTgheworldadswfilllittlenotlenorlongrememberwhatwesayherebutitcanneverforgetwhattheydidhereItisforusthelivingrathertobededicatedheretotheulnfinishedworkwhichtheywhofoughtherehavethusfarsonoblyadvancedItisratherforustobeherededicatedtothegreattdafskremainingbeforeusthatfromthesehonoreddeadwetakeincreaseddevotiontothatcauseforwhichtheygavethelastpfullmeasureofdevotionthatweherehighlyresolvethatthesedeadshallnothavediedinvainthatthisnationunsderGodshallhaveanewbirthoffreedomandthatgovernmentofthepeoplebythepeopleforthepeopleshallnotperishfromtheearth"));
+        long endTime = System.currentTimeMillis();
+        System.out.println("Time taken: " + (endTime - startTime) / 1000);
     }
 }
