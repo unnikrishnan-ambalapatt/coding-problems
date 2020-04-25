@@ -47,7 +47,6 @@ public class ZigZagConversion {
                 if (null == arr[rowCounter]) {
                     arr[rowCounter] = new String[20];
                 }
-                arr[rowCounter][colCounter] = " ";
                 arr[rowCounter][colCounter] = s.substring(charPointer, charPointer + 1);
                 charPointer++;
                 if (charPointer >= s.length()) {
@@ -83,6 +82,8 @@ public class ZigZagConversion {
     }
 
     public static void main(String[] args) {
+        convertToZigZag("PAYPALISHIRING", 3);
+        System.out.println("=============");
         convertToZigZag("PAYPALISHIRING", 4);
     }
 }
