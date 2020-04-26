@@ -1,5 +1,5 @@
 /**
- * ZigZag Conversion
+ * 6. ZigZag Conversion
  * <p>
  * The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
  * <p>
@@ -34,13 +34,16 @@ public class ZigZagConversion {
         String convertedStr = "";
         int charPointer = 0, rowCounter = 0, colCounter = 0;
 
+        if(null == s || "".equals(s.trim())) {
+            return convertedStr;
+        }
         //TODO: Approach:
         //Go top to botton until 'numRows' is reached.
         //Then go diagonally from bottom-left to top-right 'numRows' times.
         //Repeat both the above steps until all characters are run out from s.
 
         while (true) {
-            if (charPointer >= s.length()) {
+            if (charPointer == s.length() - 1) {
                 break;
             }
             while (true) {
@@ -61,7 +64,8 @@ public class ZigZagConversion {
             charPointer--;
             while (true) {
                 rowCounter--;
-                if (rowCounter == 0) {
+                if (rowCounter == -1) {
+                    rowCounter = 0;
                     break;
                 }
                 colCounter++;
@@ -74,16 +78,19 @@ public class ZigZagConversion {
         }
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
-                System.out.print(arr[i][j] == null ? " " : arr[i][j] + " ");
+                if(null != arr[i][j]) {
+                    convertedStr = convertedStr + arr[i][j];
+                }
             }
-            System.out.println();
         }
         return convertedStr;
     }
 
     public static void main(String[] args) {
-        convertToZigZag("PAYPALISHIRING", 3);
-        System.out.println("=============");
-        convertToZigZag("PAYPALISHIRING", 4);
+        System.out.println(convertToZigZag("PAYPALISHIRING", 3));
+        System.out.println(convertToZigZag("PAYPALISHIRING", 4));
+        System.out.println(convertToZigZag("", 1));
+//        System.out.println(convertToZigZag("A", 1));
+//        System.out.println(convertToZigZag("AB", 1));
     }
 }
