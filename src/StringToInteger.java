@@ -46,28 +46,71 @@
 
 public class StringToInteger {
 
-    private static int stringToInteger(String s) {
-        int num = 0, factor = 1;
+    private static int stringToInteger(String str) {
+        int num = 0;
+        long factor = 1;
         final int ASCII_A = 48;
         boolean isNegative = false;
-        for (int i = s.length() - 1; i >= 0; i--) {
-            char c = s.charAt(i);
-            if ((c < '0' || c > '9') && '-' != c) {
-                if (num != 0) {
+        if (null == str || "".equals(str.trim())) {
+            return num;
+        }
+        str = str.trim();
+        if ('-' == str.charAt(0)) {
+            isNegative = true;
+            num = num * -1;
+        }
+        if (str.length() > 1 && ('+' == str.charAt(1) || '-' == str.charAt(1))) {
+            return num;
+        }
+        //Remove leading zeros
+        int zeroCounter = 0;
+        if (isNegative) {
+            zeroCounter = 1;
+        }
+        for (; zeroCounter < str.length(); zeroCounter++) {
+            if ('0' != str.charAt(zeroCounter)) {
+                str = str.substring(zeroCounter);
+                break;
+            } else if (zeroCounter == str.length() - 1) {
+                return num;
+            }
+        }
+
+        for (int i = str.length() - 1; i >= 0; i--) {
+            char c = str.charAt(i);
+            if (c < '0' || c > '9') {
+                if (c == '+') {
+                    continue;
+                }
+                if (c != '-') {
                     num = 0;
+                    factor = 1;
                 }
                 continue;
             } else {
-                if ('-' == c) {
-                    isNegative = true;
+                if (isNegative) {
+                    if (factor > Integer.MAX_VALUE) {
+                        num = Integer.MIN_VALUE;
+                        break;
+                    }
+                    if ((num + ((c - ASCII_A) * factor)) < Integer.MIN_VALUE) {
+                        num = Integer.MIN_VALUE;
+                        break;
+                    }
+                    num = num - ((c - ASCII_A) * (int) factor);
                 } else {
-                    num = num + ((c - ASCII_A) * factor);
-                    factor = factor * 10;
+                    if (factor > Integer.MAX_VALUE) {
+                        num = Integer.MAX_VALUE;
+                        break;
+                    }
+                    if ((num + ((c - ASCII_A) * factor)) > Integer.MAX_VALUE) {
+                        num = Integer.MAX_VALUE;
+                        break;
+                    }
+                    num = num + ((c - ASCII_A) * (int) factor);
                 }
+                factor = factor * 10;
             }
-        }
-        if (isNegative) {
-            num = num * -1;
         }
         return num;
     }
@@ -78,5 +121,12 @@ public class StringToInteger {
         System.out.println(stringToInteger("4193 with words"));
         System.out.println(stringToInteger("words and 987"));
         System.out.println(stringToInteger("-91283472332"));
+        System.out.println(stringToInteger("91283472332"));
+        System.out.println(stringToInteger("3.14159"));
+        System.out.println(stringToInteger("+1"));
+        System.out.println(stringToInteger("   00012345678"));
+        System.out.println(stringToInteger("    0000000000000   "));
+        System.out.println(stringToInteger("-000000000000001"));
+        System.out.println(stringToInteger("-+2"));
     }
 }
