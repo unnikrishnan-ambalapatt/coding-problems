@@ -49,5 +49,7 @@ public class PalindromeNumber {
         System.out.println(isPalindrome(121));
         System.out.println(isPalindrome(-121));
         System.out.println(isPalindrome(10));
+        System.out.println(isPalindrome(100002));
+        System.out.println(isPalindrome(101010101));
     }
 }
