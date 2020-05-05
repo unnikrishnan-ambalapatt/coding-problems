@@ -64,5 +64,9 @@ public class IntegertoRoman {
     public static void main(String[] args) {
         System.out.println(intToRoman(250));
         System.out.println(intToRoman(2995));
+        System.out.println(intToRoman(3999));
+        System.out.println(intToRoman(1));
+        System.out.println(intToRoman(100));
+        System.out.println(intToRoman(99));
     }
 }
