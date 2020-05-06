@@ -62,11 +62,11 @@ public class IntegertoRoman {
     }
 
     public static void main(String[] args) {
-        System.out.println(intToRoman(250));
-        System.out.println(intToRoman(2995));
-        System.out.println(intToRoman(3999));
-        System.out.println(intToRoman(1));
-        System.out.println(intToRoman(100));
-        System.out.println(intToRoman(99));
+        System.out.println(intToRoman(250).equals("CCL"));
+        System.out.println(intToRoman(2995).equals("MMCMXCV"));
+        System.out.println(intToRoman(3999).equals("MMMCMXCIX"));
+        System.out.println(intToRoman(1).equals("I"));
+        System.out.println(intToRoman(100).equals("C"));
+        System.out.println(intToRoman(99).equals("XCIX"));
     }
 }
