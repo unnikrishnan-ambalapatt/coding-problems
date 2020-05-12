@@ -27,15 +27,18 @@ public class LongestCommonPrefix {
         String longest = "";
         Set<String> chars = new HashSet<>();
         int position = 0;
+        boolean shorterStrFound;
         do {
             chars.clear();
+            shorterStrFound = false;
             for (int i = 0; i < strs.length; i++) {
-                if(strs[i].length() < position + 1) {
+                if (strs[i].length() < position + 1) {
+                    shorterStrFound = true;
                     continue;
                 }
                 chars.add(strs[i].substring(position, position + 1));
             }
-            if(chars.size() == 1 && strs[0].length() >= position + 1) {
+            if (chars.size() == 1 && strs[0].length() >= position + 1 && !shorterStrFound) {
                 longest = longest + strs[0].substring(position, position + 1);
             }
             position++;
@@ -47,9 +50,11 @@ public class LongestCommonPrefix {
     public static void main(String[] args) {
         String[] arr = {"flower", "flow", "flight"};
         System.out.println(longestCommonPrefix(arr));
-        String[] arr2 = {"dog","racecar","car"};
+        String[] arr2 = {"dog", "racecar", "car"};
         System.out.println(longestCommonPrefix(arr2));
-        String[] arr3 = {"","b"};
+        String[] arr3 = {"", "b"};
         System.out.println(longestCommonPrefix(arr3));
+        String[] arr4 = {"aa", "a"};
+        System.out.println(longestCommonPrefix(arr4));
     }
 }
