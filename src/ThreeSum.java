@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 15. 3Sum
@@ -24,6 +26,7 @@ public class ThreeSum {
 
     public static List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> tripletList = new ArrayList<>();
+        boolean isPresent = false;
         for (int i = 0; i < nums.length; i++) {
             for (int j = 0; j < nums.length; j++) {
                 if (j == i) {
@@ -38,7 +41,21 @@ public class ThreeSum {
                         triplets.add(nums[i]);
                         triplets.add(nums[j]);
                         triplets.add(nums[k]);
-                        tripletList.add(triplets);
+                        isPresent = false;
+                        Collections.sort(triplets);
+                        if (tripletList.size() > 0) {
+                            for (List<Integer> list : tripletList) {
+                                if (list.containsAll(triplets) && triplets.containsAll(list)) {
+                                    isPresent = true;
+                                }
+                            }
+                            if (!isPresent) {
+                                Collections.sort(triplets);
+                                tripletList.add(triplets);
+                            }
+                        } else {
+                            tripletList.add(triplets);
+                        }
                     }
                 }
             }
@@ -47,7 +64,7 @@ public class ThreeSum {
     }
 
     public static void main(String[] args) {
-        int[] arr = {-1, 0, 1, 2, -1, -4};
+        int[] arr = {-1, 1, 0, 0, 0};
         System.out.println(threeSum(arr));
         int[] arr2 = {-1, 0, 1, 2, -1, -4, 5, 2};
         System.out.println(threeSum(arr2));
