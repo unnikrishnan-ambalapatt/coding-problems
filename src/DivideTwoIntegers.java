@@ -33,7 +33,7 @@ public class DivideTwoIntegers {
             return dividend;
         }
         int quotient = 0;
-        boolean isNegative = false, dividentIncremented = false;
+        boolean isNegative = false, dividendIncremented = false;
         if (divisor < 0) {
             isNegative = !isNegative;
             divisor = -divisor;
@@ -42,11 +42,11 @@ public class DivideTwoIntegers {
             isNegative = !isNegative;
             if (dividend == Integer.MIN_VALUE) {
                 dividend++;
-                dividentIncremented = true;
+                dividendIncremented = true;
             }
             dividend = -dividend;
         }
-        if (dividentIncremented && isNegative) {
+        if (dividendIncremented && isNegative) {
             dividend++;
         }
         if ((dividend - divisor) == 0) {
