@@ -59,19 +59,19 @@ public class RemoveDuplicatesFromSortedArray {
 
     public static void main(String[] args) {
         int[] nums = {1, 1, 2};
-        int duplicateCount;
-        duplicateCount = removeDuplicates(nums);
+        int newArraySize;
+        newArraySize = removeDuplicates(nums);
         System.out.println("After duplicate removal: " + Arrays.toString(nums));
-        System.out.println("Duplicate count: " + duplicateCount);
+        System.out.println("Duplicate count: " + newArraySize);
 
         int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
-        duplicateCount = removeDuplicates(nums2);
+        newArraySize = removeDuplicates(nums2);
         System.out.println("After duplicate removal: " + Arrays.toString(nums2));
-        System.out.println("Duplicate count: " + duplicateCount);
+        System.out.println("Duplicate count: " + newArraySize);
 
         int[] nums3 = {0, 0, 0, 0, 3};
-        duplicateCount = removeDuplicates(nums3);
+        newArraySize = removeDuplicates(nums3);
         System.out.println("After duplicate removal: " + Arrays.toString(nums3));
-        System.out.println("Duplicate count: " + duplicateCount);
+        System.out.println("Duplicate count: " + newArraySize);
     }
 }
